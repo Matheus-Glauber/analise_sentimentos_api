@@ -34,7 +34,7 @@ def create_analysis(analisar: AnaliseSentimento):
         model="gemini-2.5-flash-lite",
     )
 
-    analise_sanitizada = re.sub(r"```json|```", "", analise_concluida.candidates[0].content.parts[0].text).strip()
+    analise_sanitizada = re.sub(r"```json|```", "", analise_concluida.candidates[0].content.parts[0].text).strip() # type: ignore
     analise_json = json.loads(analise_sanitizada)
 
     historico_analises.append(analise_json)
