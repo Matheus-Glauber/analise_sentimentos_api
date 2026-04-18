@@ -86,3 +86,47 @@ Recebe uma frase e retorna a análise de sentimento em formato JSON, contendo:
 Retorna o histórico de todas as análises realizadas na sessão atual.
 
 ![GET /historico](assets/method_get_history.png)
+
+---
+
+## CI/CD
+
+### Repository Secrets
+
+Para o funcionamento da pipeline, foram configuradas as seguintes variáveis de ambiente como **Repository Secrets** no GitHub:
+
+- `DOCKERHUB_USERNAME`: usuário do Docker Hub
+- `DOCKERHUB_TOKEN`: token de acesso do Docker Hub
+
+![Repository Secrets](assets/repository_secrets.png)
+
+---
+
+### Pipeline - GitHub Actions
+
+Foi criada uma pipeline no GitHub Actions (`.github/workflows/build.yml`) que realiza automaticamente o **build** e a **publicação** da imagem Docker do projeto no Docker Hub a cada push na branch `master`.
+
+A pipeline possui dois jobs:
+
+1. **build**: instala as dependências e verifica a sintaxe do código.
+2. **publish**: faz login no Docker Hub, realiza o build da imagem e publica com a tag `latest`.
+
+![Pipeline GitHub Actions](assets/pipeline_github_actions.png)
+
+---
+
+### Imagem no Docker Hub
+
+A imagem está disponível publicamente no Docker Hub. Para baixá-la, execute:
+
+```bash
+docker pull <seu-usuario-dockerhub>/analise-sentimentos-api:latest
+```
+
+Para rodar o container:
+
+```bash
+docker run -d -p 8000:8000 -e GEMINI_API_KEY=<sua-chave> <seu-usuario-dockerhub>/analise-sentimentos-api:latest
+```
+
+![Imagem no Docker Hub](assets/imagem_docker_hub.png)
