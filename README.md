@@ -97,6 +97,30 @@ Para o funcionamento da pipeline, foram configuradas as seguintes variáveis de 
 
 - `DOCKERHUB_USERNAME`: usuário do Docker Hub
 - `DOCKERHUB_TOKEN`: token de acesso do Docker Hub
+- `RENDER_DEPLOY_HOOK_URL`: URL do Deploy Hook do serviço no Render
+
+---
+
+## Deploy no Render
+
+O deploy da aplicação no [Render](https://render.com) é feito de forma **manual** através de um workflow do GitHub Actions.
+
+### Como realizar o deploy
+
+1. No repositório do GitHub, acesse a aba **Actions**
+2. No menu lateral, selecione o workflow **Deploy to Render**
+3. Clique no botão **Run workflow** e selecione a branch desejada (ex: `master`)
+4. O workflow irá disparar o Deploy Hook do Render, que inicia o build e deploy da aplicação automaticamente
+
+![Deploy to Render via GitHub Actions](assets/deploy_to_render.png)
+
+### Interface do Render
+
+Após o deploy ser disparado, é possível acompanhar o status na interface do Render. O painel de **Events** mostra o histórico de deploys, incluindo o commit associado e se foi acionado via Deploy Hook.
+
+![Interface do Render](assets/render_interface.png)
+
+> **Nota:** No plano gratuito do Render, a instância entra em modo de inatividade após um período sem requisições, o que pode causar um atraso de ~50 segundos na primeira requisição após a inatividade.
 
 ![Repository Secrets](assets/repository_secrets.png)
 
