@@ -120,13 +120,13 @@ A pipeline possui dois jobs:
 A imagem está disponível publicamente no Docker Hub. Para baixá-la, execute:
 
 ```bash
-docker pull <seu-usuario-dockerhub>/analise-sentimentos-api:latest
+docker pull matheusglauber/analise-sentimentos-api:latest
 ```
 
 Para rodar o container:
 
 ```bash
-docker run -d -p 8000:8000 -e GEMINI_API_KEY=<sua-chave> <seu-usuario-dockerhub>/analise-sentimentos-api:latest
+docker run -d -p 8000:8000 -e GEMINI_API_KEY=<sua-chave> matheusglauber/analise-sentimentos-api:latest
 ```
 
 ![Imagem no Docker Hub](assets/imagem_docker_hub.png)
